@@ -1,8 +1,10 @@
+/*  Style classes to target general HTML elements */
+
 body {
     color: #333333;
     font-family: arial;
     max-width: 650px;
-    margin: 0 auto;
+    margin: 0 16px;
     padding: 0 16px;
     
     display: flex;
@@ -23,7 +25,7 @@ header {
 }
 
 h1 {
-    font-size: 64px;
+    font-size: 40px;
     margin-bottom: 16px;
 }
 
@@ -32,6 +34,8 @@ header a {
     margin-right: 16px;
     text-decoration: none;
 }
+
+/*  Style classes to target specific elements */
 
 .portrait {
     width: 250px;

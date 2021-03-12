@@ -1,31 +1,19 @@
 const request = require('request')
-const chalk = require('chalk')
+
+// Callback function that takes in lat/long and returns weather information from WeatherStack api
 
 const forecast = (latitude, longitude, callback) => {
     const url = "http://api.weatherstack.com/current?access_key=a881442ca3b9f7e89ca6149054c1fbc1&query="+latitude+","+longitude+"&units=f"
-    request({ url, json: true }, (error, { body }) => {
-        if (error) {
+    request({ url, json: true }, (error, { body }) => {  // Request takes in URL and JSON argument, returns error or destructured object body
+        if (error) {  // Returns the error below if it can't connect to the api
             callback("Unable to connect to weather service", undefined)
-        } else if (body.error) {
+        } else if (body.error) {  // Returns the error below if the api doesn't recognize the input provided
                 callback("Unable to find location", undefined)
-
-        } else {
+        } else {  // Returns the destructured body of the object
             callback(undefined, {body})
         }
     })
 }
 
+// Exports the function to be available elsewhere in the app
 module.exports = forecast
-
-
-
-//
-// Goal: Create a reusable function for getting the forecast
-//
-// 1. Setup the "forecast" function in utils/forecast.js
-// 2. Require the function in app.js and call it as shown below
-// 3. The forecast function should have three potential calls to callback:
-//    - Low level error, pass string for error
-//    - Coordinate error, pass string for error
-//    - Success, pass forecast string for data (same format as from before)
-
