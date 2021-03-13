@@ -5,10 +5,11 @@ const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-one')
 const messageTwo = document.querySelector('#message-two')
+const messageThree = document.querySelector('#message-three')
+const messageFour = document.querySelector('#message-four')
+const messageFive = document.querySelector('#message-five')
 
 // Sets the initial content to display on-screen
-messageOne.textContent = 
-messageTwo.textContent = 
 
 // Function that submits the input and returns the weather from the api
 weatherForm.addEventListener('submit', (e) => {
@@ -16,16 +17,18 @@ weatherForm.addEventListener('submit', (e) => {
     const location = search.value // Assinging the value of the user input
 
     messageOne.textContent = "Loading..."   //changing the message to loading
-    messageTwo.textContent = ""
 
     // Fetch call to the weather api concatenating the location in the query string
     fetch('/weather?address=' + location).then((response) => {
-        response.json().then((data) => {  // Turns the response into JSON
-            if (data.error) {  // Checks for error and displays it
-                messageOne.textContent = data.error
+        response.json().then(({forecast: {forecastData:{body}}}) => {    // Turns the response into JSON
+            if (body.error) {  // Checks for error and displays it
+                messageOne.textContent = body.error
             } else {  // Returns the requested data in the associated HTML elements below
-                messageOne.textContent = data.forecast.forecastData.body.location.name + ", " + data.forecast.forecastData.body.location.region
-                messageTwo.textContent = "The current temperature is: " + data.forecast.forecastData.body.current.temperature
+                messageOne.textContent = body.location.name + ", " + body.location.region
+                messageTwo.textContent = "Current temp: " + body.current.temperature
+                messageThree.textContent = "Feels like: " + body.current.feelslike
+                messageFour.textContent = "Wind speed: " + body.current.wind_speed + " " + body.current.wind_dir
+                messageFive.textContent = "Humidity: " + body.current.humidity + "%"
             }
         }) 
     })
