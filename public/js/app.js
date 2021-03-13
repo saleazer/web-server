@@ -19,7 +19,7 @@ weatherForm.addEventListener('submit', (e) => {
     messageTwo.textContent = ""
 
     // Fetch call to the weather api concatenating the location in the query string
-    fetch('http://localhost:3000/weather?address=' + location).then((response) => {
+    fetch('/weather?address=' + location).then((response) => {
         response.json().then((data) => {  // Turns the response into JSON
             if (data.error) {  // Checks for error and displays it
                 messageOne.textContent = data.error
