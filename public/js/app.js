@@ -19,13 +19,13 @@ weatherForm.addEventListener('submit', (e) => {
     messageTwo.textContent = ""
 
     // Fetch call to the weather api concatenating the location in the query string
-    fetch('http://api.weatherstack.com/current?access_key=a881442ca3b9f7e89ca6149054c1fbc1&query=' + location + '&units=f').then((response) => {
+    fetch('http://localhost:3000/weather?address=' + location).then((response) => {
         response.json().then((data) => {  // Turns the response into JSON
             if (data.error) {  // Checks for error and displays it
                 messageOne.textContent = data.error
             } else {  // Returns the requested data in the associated HTML elements below
-                messageOne.textContent = data.location.name
-                messageTwo.textContent = data.current.temperature
+                messageOne.textContent = data.forecast.forecastData.body.location.name + ", " + data.forecast.forecastData.body.location.region
+                messageTwo.textContent = "The current temperature is: " + data.forecast.forecastData.body.current.temperature
             }
         }) 
     })
