@@ -19,7 +19,7 @@ weatherForm.addEventListener('submit', (e) => {
     messageTwo.textContent = ""
 
     // Fetch call to the weather api concatenating the location in the query string
-    fetch('http://api.weatherstack.com/current?access_key=a881442ca3b9f7e89ca6149054c1fbc1&query=' + location + '&units=f').then((response) => {
+    fetch('/weather/weather?address=' + location).then((response) => {
         response.json().then((data) => {  // Turns the response into JSON
             if (data.error) {  // Checks for error and displays it
                 messageOne.textContent = data.error
