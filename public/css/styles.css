@@ -38,9 +38,13 @@ header a {
 /*  Style classes to target specific elements */
 
 .portrait {
-    width: 250px;
+    width: 200px;
 }
 
 .main-content {
     flex-grow: 1;
+}
+
+.infobox {
+    max-width: 400px;
 }

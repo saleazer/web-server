@@ -32,19 +32,19 @@ app.use(express.static(publicDirectoryPath))
 app.get('', (req, res) => {     // Takes in browser route, then function with request/response
     res.render('index', {       // Renders the HTML page to 'view' from views (set up in the views path above)
         title: "Weather Page",  // Returns the following object
-        name: 'Stephanie'
+        name: 'Stephanie Leazer'
     })
 })
 app.get('/about', (req, res) => {
     res.render('about', {
         title: "About Page",
-        name: 'Stephanie'
+        name: 'Stephanie Leazer'
     })
 })
 app.get('/help', (req, res) => {
     res.render('help', {
         title: "Help Page",
-        name: 'Stephanie',
+        name: 'Stephanie Leazer',
         message: "Here's my example message."
     })
 })
