@@ -25,9 +25,9 @@ weatherForm.addEventListener('submit', (e) => {
                 messageOne.textContent = body.error
             } else {  // Returns the requested data in the associated HTML elements below
                 messageOne.textContent = body.location.name + ", " + body.location.region
-                messageTwo.textContent = "Current temp: " + body.current.temperature
-                messageThree.textContent = "Feels like: " + body.current.feelslike
-                messageFour.textContent = "Wind speed: " + body.current.wind_speed + " " + body.current.wind_dir
+                messageTwo.textContent = "Current temp: " + body.current.temperature + " degrees F"
+                messageThree.textContent = "Feels like: " + body.current.feelslike + " degrees F"
+                messageFour.textContent = "Wind speed: " + body.current.wind_dir + " " + body.current.wind_speed + " mph"
                 messageFive.textContent = "Humidity: " + body.current.humidity + "%"
             }
         }) 
