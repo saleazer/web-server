@@ -19,7 +19,7 @@ weatherForm.addEventListener('submit', (e) => {
     messageOne.textContent = "Loading..."   //changing the message to loading
 
     // Fetch call to the weather api concatenating the location in the query string
-    fetch('/weather?address=' + location).then((response) => {
+    fetch('/weather?address=' + location).then((response) => { 
         response.json().then(({forecast: {forecastData:{body}}}) => {    // Turns the response into JSON
             if (body.error) {  // Checks for error and displays it
                 messageOne.textContent = body.error
